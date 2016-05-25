@@ -14,6 +14,7 @@
 
 <script>
 import LinkFeed from 'components/LinkFeed.vue'
+import Lauth from './lauth.js'
 
 export default {
     components: {
@@ -22,7 +23,8 @@ export default {
 
     data () {
         return {
-            links: []
+            links: [],
+            auth: new Lauth()
         }
     },
 
@@ -36,10 +38,7 @@ export default {
         },
 
         checkAuth () {
-            var token = localStorage.getItem('ltk991')
-            var auth = 'bearer ' + token
-
-            this.$http.delete('http://localhost:3000/api/links/3', {}, { headers: { 'Authorization': auth } }).then(function (response) {
+            this.$http.delete('http://localhost:3000/api/links/3', {}, { headers: this.auth.getAuthHeaders() }).then(function (response) {
                 console.log(response)
             })
         }

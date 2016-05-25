@@ -12,6 +12,12 @@ Vue.http.options.emulateJSON = true
 new Vue({
     el: 'body',
 
+    data () {
+        return {
+            auth: false
+        }
+    },
+
     components: {
         App
     }
