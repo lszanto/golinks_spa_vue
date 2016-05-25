@@ -34,7 +34,8 @@ export default {
                 return response.data
             }).then(function (json) {
                 localStorage.setItem('ltk991', json.token)
-            })
+                this.$parent.updateAuth(json.token)
+            }.bind(this))
         },
 
         checkAuth () {

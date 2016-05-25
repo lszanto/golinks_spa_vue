@@ -8,6 +8,9 @@ Vue.use(VueResource)
 // setup vue defaults
 Vue.http.options.emulateJSON = true
 
+// if we have token
+if (localStorage.getItem('ltk991')) Vue.http.headers.common['Authorization'] = 'bearer ' + localStorage.getItem('ltk991')
+
 /* eslint-disable no-new */
 new Vue({
     el: 'body',
@@ -20,5 +23,11 @@ new Vue({
 
     components: {
         App
+    },
+
+    methods: {
+        updateAuth (token) {
+            Vue.http.headers.common['Authorization'] = 'bearer ' + token
+        }
     }
 })
