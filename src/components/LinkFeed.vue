@@ -3,7 +3,6 @@
     <ul>
         <link v-for="link in links" :link="link" >
     </ul>
-    <button @click="showUs" >Show us</button>
   </div>
 </template>
 
@@ -28,10 +27,3 @@ export default {
     }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1 {
-  color: #42b983;
-}
-</style>

@@ -1,8 +1,12 @@
 <template>
-  <div class="link">
+  <div class="link" @click="viewLink(link)" >
     <div class="top" >
         <h4>{{ link.Title }}</h4>
-        <small>{{ link.CreatedAt }}</small>
+        <small>created {{ link.CreatedAt }}</small>
+    </div>
+
+    <div class="link-body" >
+        {{ link.URL }}
     </div>
   </div>
 </template>
@@ -13,24 +17,12 @@ export default {
 
     props: {
         link: Object
+    },
+
+    methods: {
+        viewLink (link) {
+            window.open('http://localhost:3000/api/links/' + link.ID)
+        }
     }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.link {
-    clear: both;
-}
-
-.top h4 {
-    float: left;
-    color: #42b983;
-}
-
-.top small {
-    float: right;
-    font-size: 12px;
-    font-weight: bold;
-}
-</style>

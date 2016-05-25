@@ -1,8 +1,15 @@
 <template>
-  <div id="app">
-    <link-feed :links="links" ></link-feed>
-    <button @click="sayHi" >Say hello</button>
-  </div>
+    <div id="app">
+        <div class="header" >
+            <h1 class="logo" >.links</h1>
+        </div>
+
+        <div class="wrapper" >
+            <link-feed :links="links" ></link-feed>
+            <button @click="runAuth" >Run Auth</button>
+            <button @click="checkAuth" >Check Auth</button>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -20,8 +27,21 @@ export default {
     },
 
     methods: {
-        sayHi () {
-            console.log(this.links)
+        runAuth () {
+            this.$http.post('http://localhost:3000/api/user/login', { username: 'luke', password: 'cool' }).then(function (response) {
+                return response.data
+            }).then(function (json) {
+                localStorage.setItem('ltk991', json.token)
+            })
+        },
+
+        checkAuth () {
+            var token = localStorage.getItem('ltk991')
+            var auth = 'bearer ' + token
+
+            this.$http.delete('http://localhost:3000/api/links/3', {}, { headers: { 'Authorization': auth } }).then(function (response) {
+                console.log(response)
+            })
         }
     },
 
@@ -34,25 +54,3 @@ export default {
     }
 }
 </script>
-
-<style>
-html {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-#app {
-  color: #2c3e50;
-  margin-top: -100px;
-  max-width: 600px;
-  font-family: Source Sans Pro, Helvetica, sans-serif;
-  text-align: center;
-}
-
-</style>
