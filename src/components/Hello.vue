@@ -15,6 +15,12 @@ export default {
       msg: 'Hello World!'
     }
   }
+
+    methods: {
+        sayHello() {
+            alert('yeah mate');
+        }
+    }
 }
 </script>
 
