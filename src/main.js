@@ -9,19 +9,7 @@ Vue.use(VueResource)
 new Vue({
     el: 'body',
 
-    http: {
-        root: ''
-    },
-
     components: {
         App
-    },
-
-    created () {
-        this.$http.get('http://localhost:3000/api/links').then(function (response) {
-            return response.data
-        }).then(function (json) {
-            console.log(json)
-        })
     }
 })
