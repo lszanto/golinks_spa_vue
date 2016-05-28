@@ -6,8 +6,6 @@
 
         <div class="wrapper" >
             <link-feed :links="links" ></link-feed>
-            <button @click="runAuth" >Run Auth</button>
-            <button @click="checkAuth" >Check Auth</button>
         </div>
     </div>
 </template>
@@ -36,12 +34,6 @@ export default {
                 localStorage.setItem('ltk991', json.token)
                 this.$parent.updateAuth(json.token)
             }.bind(this))
-        },
-
-        checkAuth () {
-            this.$http.delete('http://localhost:3000/api/links/3', {}, { headers: this.auth.getAuthHeaders() }).then(function (response) {
-                console.log(response)
-            })
         }
     },
 

@@ -34,8 +34,11 @@ export default {
         },
 
         removeLink (link) {
+            // confirm with user
+            if (!confirm('Are you sure you want to delete this link? This cannot be undone')) return
+
             // chuck an actual delete out there
-            this.resource.delete({ id: link.ID }, {}, { headers: this.auth.getAuthHeaders() })
+            this.resource.delete({ id: link.ID })
 
             // remove the link visually
             this.$parent.links.$remove(link)

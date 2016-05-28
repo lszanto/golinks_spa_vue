@@ -15,12 +15,6 @@ if (localStorage.getItem('ltk991')) Vue.http.headers.common['Authorization'] = '
 new Vue({
     el: 'body',
 
-    data () {
-        return {
-            auth: false
-        }
-    },
-
     components: {
         App
     },
