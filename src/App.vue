@@ -5,6 +5,7 @@
         </div>
 
         <div class="wrapper" >
+            <link-add></link-add>
             <link-feed :links="links" ></link-feed>
         </div>
     </div>
@@ -12,17 +13,17 @@
 
 <script>
 import LinkFeed from 'components/LinkFeed.vue'
-import Lauth from './lauth.js'
+import LinkAdd from 'components/LinkAdd.vue'
 
 export default {
     components: {
-        LinkFeed
+        LinkFeed,
+        LinkAdd
     },
 
     data () {
         return {
-            links: [],
-            auth: new Lauth()
+            links: []
         }
     },
 

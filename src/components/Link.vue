@@ -12,14 +12,11 @@
 </template>
 
 <script>
-import Lauth from '../lauth.js'
-
 export default {
     name: 'Link',
 
     data () {
         return {
-            auth: new Lauth(),
             resource: this.$resource('http://localhost:3000/api/links/{id}')
         }
     },
