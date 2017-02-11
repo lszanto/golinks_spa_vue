@@ -1,4 +1,6 @@
-# links2
+# links
+
+> An attempt at an SPA for my golinks project to learn a little bit about Vue.
 
 > A Vue.js project
 
